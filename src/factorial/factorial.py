@@ -6,23 +6,25 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(num): 
-    if num < 0: 
-        print("Factorial de un número negativo no existe")
-
-    elif num == 0: 
-        return 1
-        
-    else: 
+def factorial(num1, num2):  
+    res=[]
+    for i in range(num1, num2+1):
         fact = 1
-        while(num > 1): 
-            fact *= num 
-            num -= 1
-        return fact 
-
-if len(sys.argv) == 1:
-   print("Debe informar un número!")
+        while(i > 1): 
+            fact *= i 
+            i -= 1
+        res.append(fact)
+    return res
+    
+if len(sys.argv) < 3:
+   print("Debe informar dos números!")
    sys.exit()
-num=int(sys.argv[1])
-print("Factorial ",num,"! es ", factorial(num)) 
-
+else:
+    numero1=int(sys.argv[1])
+    numero2=int(sys.argv[2])
+if numero1>3 and numero2<9:
+    for numero in (factorial(numero1, numero2)):
+        print(f"El factorial de {numero1}! es {numero}") 
+        numero1 += 1
+else:
+    print("Alguno de los numeros ingresados está fuera del rango [4, 8]")
