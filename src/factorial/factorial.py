@@ -6,7 +6,7 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(num1, num2):  
+def factorial(num1, num2): 
     res=[]
     for i in range(num1, num2+1):
         fact = 1
@@ -22,9 +22,10 @@ if len(sys.argv) < 3:
 else:
     numero1=int(sys.argv[1])
     numero2=int(sys.argv[2])
-if numero1>3 and numero2<9:
+if numero1 < 0 or numero2 < 0:
+        print("No se aceptan numeros negativos")
+else: 
     for numero in (factorial(numero1, numero2)):
         print(f"El factorial de {numero1}! es {numero}") 
         numero1 += 1
-else:
-    print("Alguno de los numeros ingresados está fuera del rango [4, 8]")
+
