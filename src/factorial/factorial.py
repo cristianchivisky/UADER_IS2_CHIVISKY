@@ -6,9 +6,9 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(num1, num2): 
+def factorial(hasta): 
     res=[]
-    for i in range(num1, num2+1):
+    for i in range(1, hasta+1):
         fact = 1
         while(i > 1): 
             fact *= i 
@@ -16,16 +16,13 @@ def factorial(num1, num2):
         res.append(fact)
     return res
     
-if len(sys.argv) < 3:
-   print("Debe informar dos números!")
+if len(sys.argv) == 1:
+   print("Debe informar un número!")
    sys.exit()
 else:
-    numero1=int(sys.argv[1])
-    numero2=int(sys.argv[2])
-if numero1 < 0 or numero2 < 0:
-        print("No se aceptan numeros negativos")
-else: 
-    for numero in (factorial(numero1, numero2)):
-        print(f"El factorial de {numero1}! es {numero}") 
-        numero1 += 1
+    num=int(sys.argv[1])
+aux = 1
+for numero in (factorial(num)):
+    print(f"El factorial de {aux}! es {numero}") 
+    aux += 1
 
