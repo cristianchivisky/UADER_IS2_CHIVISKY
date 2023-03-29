@@ -6,9 +6,9 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(hasta): 
+def factorial(desde): 
     res=[]
-    for i in range(1, hasta+1):
+    for i in range(desde, 61):
         fact = 1
         while(i > 1): 
             fact *= i 
@@ -21,8 +21,8 @@ if len(sys.argv) == 1:
    sys.exit()
 else:
     num=int(sys.argv[1])
-aux = 1
+
 for numero in (factorial(num)):
-    print(f"El factorial de {aux}! es {numero}") 
-    aux += 1
+    print(f"El factorial de {num}! es {numero}") 
+    num += 1
 
