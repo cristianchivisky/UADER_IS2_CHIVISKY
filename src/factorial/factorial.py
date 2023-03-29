@@ -6,6 +6,7 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
+#este programa calcula los factoriales comprendidos entre la variable "desde" y el número 60.
 def factorial(desde): 
     res=[]
     for i in range(desde, 61):
@@ -14,14 +15,14 @@ def factorial(desde):
             fact *= i 
             i -= 1
         res.append(fact)
-    return res
+    return res #devuelve una lista con los resultados de los factoriales
     
 if len(sys.argv) == 1:
    print("Debe informar un número!")
    sys.exit()
 else:
     num=int(sys.argv[1])
-
+#en este ciclo se muestran los resultados correspondientes a cada número
 for numero in (factorial(num)):
     print(f"El factorial de {num}! es {numero}") 
     num += 1
