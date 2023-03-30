@@ -1,6 +1,4 @@
-![hg](https://drive.google.com/file/d/1qWyjbY9GBWNVAn-7aMYfoQTrrtaKLiRn/view?usp=sharing)
-![logo](C:\Users\crist\Desktop\Ingeniería de Software 2\logo.png)
-
+![Logo FCyT](https://user-images.githubusercontent.com/83735787/228974616-d462bfa8-2af2-4e85-992e-9e3d979a78c4.jpeg)
 
 ------------
 
