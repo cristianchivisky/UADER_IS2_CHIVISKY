@@ -4,19 +4,22 @@ class Factorial:
         self.maximo = num2
         self.resultado = []
 
-    def min(self):
-        self.minimo
+    def obtener_min(self):
+        return self.minimo
 
     def min(self, a):
         self.minimo = a
 
-    def max(self):
-        self.maximo
+    def obtener_max(self):
+        return self.maximo
 
     def max(self, a):
         self.maximo = a
 
     def res(self):
+        return self.resultado
+
+    def mostrar_resultados(self):
         num_aux = self.minimo
         for numero in (self.resultado):
             print(f'El factorial de {num_aux} es {numero}')
