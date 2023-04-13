@@ -4,7 +4,8 @@ sys.path.append(r'c:\users\crist\appdata\local\programs\python\python37\lib\site
 import openai
 from mi_apy_key import clave
 
-openai.api_key = clave
+openai.api_key = clave 
+#Los siguientes son parámetros para la API
 TOP_P=1
 FREQ_PENALTY=0
 PRES_PENALTY=0
@@ -15,6 +16,7 @@ NMAX=1
 MODEL_ENGINE = "text-davinci-003"
 USERNAME='You: '
 AI_NAME='chatGPT: '
+#En get_completion se llama a la API de chatGPT
 def get_completion(userText):
     completion=openai.Completion.create(engine=MODEL_ENGINE,
                                         prompt=userText,
@@ -26,6 +28,7 @@ def get_completion(userText):
                                         temperature=TEMPERATURE,
                                         stop=STOP)
     return completion.choices[0].text
+#En start_conversation se inicia el modo conversación con la API
 def start_conversation():
     print('Bienvenido al modo conversación, para salir ingrese "exit"')
     conversation_history = ''
@@ -34,7 +37,7 @@ def start_conversation():
             user_text=input('You: ')
             if user_text == '':
                 raise ValueError('Debe ingresar una consulta!')
-            elif user_text=='exit':
+            elif user_text=='exit':     #Si el usuario ingresa "exit" se corta el ciclo while y sale.
                 break
         except ValueError as e:
             print(e)
