@@ -62,6 +62,8 @@ if __name__ == '__main__':
 	else:
 		numero=int(numero)
 		before_numero=Numero(numero)
+		print(f'\nClase sin agregados: {before_numero.mostrar_operacion()}\n')
+		print('Resultado de la clase con la invocación anidada a las clases con las diferentes operaciones:')
 		after_numero= DividirPorTres(MultiplicarPorDos(SumarDos(before_numero)))
-		print(f'\n{after_numero.mostrar_operacion()}')
-		print(f"\nAntes {before_numero.operacion()} y despues {after_numero.operacion()}\n")
+		print(f'{after_numero.mostrar_operacion()}\n')
+		print(f'Resultado {after_numero.operacion()}')
