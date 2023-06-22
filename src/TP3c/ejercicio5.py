@@ -17,6 +17,8 @@ class FileWriterUtility:
     def save(self):
         if len(self.states) == 4:
             self.states.pop(0)
+            pos = self.content.find('\n')
+            self.content = self.content[pos+1:]
         self.states.append(Memento(self.file, self.content))
         return Memento(self.file, self.content)
     
