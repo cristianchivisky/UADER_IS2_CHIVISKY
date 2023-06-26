@@ -96,11 +96,13 @@ class Handler(object):
         self.nextHandler.handle(numero_pedido, monto)
 
 class Cuenta1Handler(Handler):
-    def __init__(self):
+    def __init__(self, collection: WordsCollection, token):
         """Inicializa el objeto Cuenta1Handler."""
         super(Cuenta1Handler, self).__init__()
-        self.token=z1.extraer_token('token1')
+        self.token=token
         self.monto=1000
+        self.collection = collection
+
 
     def handle(self, numero_pedido, monto):
         """Maneja el pedido de pago en el Banco 1."""
@@ -115,14 +117,16 @@ class Cuenta1Handler(Handler):
         """Procesa el pago exitoso en el Banco 1."""
         self.monto -= monto
         print(f'Pago exitoso, numero de pedido {numero_pedido}, token: {self.token}, monto ${monto}\n')
-        collection.add_item(f'Numero de pedido {numero_pedido}, Token: {self.token}, Monto ${monto}')
+        self.collection.add_item(f'Numero de pedido {numero_pedido}, Token: {self.token}, Monto ${monto}')
 
 class Cuenta2Handler(Handler):
-    def __init__(self):
+    def __init__(self, collection: WordsCollection, token):
         """Inicializa el objeto Cuenta2Handler."""
         super(Cuenta2Handler, self).__init__()
-        self.token=z1.extraer_token('token2')
+        self.token=token
         self.monto=2000
+        self.collection = collection
+
 
     def handle(self, numero_pedido, monto):
         """Maneja el pedido de pago en el Banco 2."""
@@ -137,7 +141,7 @@ class Cuenta2Handler(Handler):
         """Procesa el pago exitoso en el Banco 2."""
         self.monto -= monto
         print(f'Pago exitoso, numero de pedido {numero_pedido}, token: {self.token}, monto: ${monto}\n')
-        collection.add_item(f'Numero de pedido {numero_pedido}, Token: {self.token}, Monto ${monto}')
+        self.collection.add_item(f'Numero de pedido {numero_pedido}, Token: {self.token}, Monto ${monto}')
 
 #*--------------------------------------------------------------
 # main
@@ -145,10 +149,13 @@ class Cuenta2Handler(Handler):
 if __name__ == "__main__":
 
     z1=APItoken() # Se crea una instancia de la clase APItoken
-    cuenta1=Cuenta1Handler() # Se inicializan los actuadores
-    cuenta2=Cuenta2Handler()
-    cuenta1.nextHandler=cuenta2 # Establece ahora la cadena de llamada
+    token1 = z1.extraer_token('token1')
+    token2 = z1.extraer_token('token2')
     collection = WordsCollection()
+    cuenta1=Cuenta1Handler(collection, token1) # Se inicializan los actuadores
+    cuenta2=Cuenta2Handler(collection, token2)
+    cuenta1.nextHandler=cuenta2 # Establece ahora la cadena de llamada
+    
 
     cuenta1.handle('1', 500)
     cuenta1.handle('2', 500)
